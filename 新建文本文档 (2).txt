@@ -1,0 +1,61 @@
+<load-on-startup>1</load-on-startup>
+服务器启动就加载servlet
+顺序按数字从小到大
+
+
+servletconfig就代表一个servlet对象
+servletcontext就代表一个应用
+所以servletcontext包含多个servletconfig
+
+
+所以servletconfig也不可以拿到servletcontext中的值
+而servletcontext不能拿到servletconfig的值
+
+ServletConfig中的方法
+1.getInitParameter(name) 获取web.xml下的servlet中的init-param
+2.getservletname
+3.getservletcontext
+4.getservletnames
+-------------------JDBC------------------------
+准备工作
+1.需要下载对应的驱动jar包
+2.参考
+http://blog.csdn.net/ring0hx/article/details/6152528
+使用各数据库对应的 ：驱动包 驱动类  连接url
+
+
+DriverManager  管理驱动 
+
+1.注册添加驱动 
+Class.forName(驱动类)
+2.使用驱动管理，通过驱动类建立连接
+getConnection(url,name,password)
+
+Connection  可以设置是否自动提交，默认自动提交
+设置自动提交 setAutoCommit(boolean) true自动 false不自动
+不自动提交时
+a.commit提交
+b.rollback 回滚
+
+
+3.通过连接，执行sql或存储过程语句
+a.createStatement  不带参数的sql语句
+b.prepareStatement(sql语句) 带参数的sql语句
+c.prepareCall('call 存储过程名(?,?,?,?)') 存储过程
+
+
+4.对数据库进行操作
+Statement
+a.execute()
+b.executeQuery()  得到ResultSet结果集
+
+PreparedStatement
+通过setXXX(位置,值) 方法设置参数
+CallableStatement
+
+5. 获得结果集
+ResultSet
+通过next()获取下一条记录
+通过getXXX(列名) 获得该记录的列值
+
+----------------------------------------------------------
